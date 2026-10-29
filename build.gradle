@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+    id 'gg.essential.loom' version '0.10.0.+'
+    id 'dev.architectury.architectury-pack200' version '0.1.3'
+}
+
+group = 'com.fldsmdfr'
+version = '1.0.0'
+base.archivesName = 'FLDSMDFR-1.8.9'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
+
+repositories {
+    mavenCentral()
+}
+
+loom {
+    silentMojangMappingsLicense()
+    forge {
+        pack200Provider.set(new dev.architectury.pack200.java.Pack200Adapter())
+    }
+}
+
+dependencies {
+    minecraft 'com.mojang:minecraft:1.8.9'
+    mappings 'de.oceanlabs.mcp:mcp_stable:22-1.8.9'
+    forge 'net.minecraftforge:forge:1.8.9-11.15.1.2318-1.8.9'
+}
