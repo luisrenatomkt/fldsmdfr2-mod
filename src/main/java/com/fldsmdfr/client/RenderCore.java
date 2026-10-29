@@ -7,7 +7,6 @@ import com.fldsmdfr.tile.TileEntityFldsmdfr;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.util.EnumFacing;
 
 /**
  * Draws the machine. The BODY is the original white/orange capsule (screen, keypad, buttons, legs, light fan).
@@ -57,7 +56,7 @@ public class RenderCore extends TileEntitySpecialRenderer<TileEntityFldsmdfr> {
 
         GlStateManager.pushMatrix();
         GlStateManager.translate(x + 0.5, y, z + 0.5);
-        GlStateManager.rotate(EnumFacing.getHorizontal(te.facing & 3).getHorizontalAngle(), 0, 1, 0);
+        GlStateManager.rotate((te.facing & 3) * 90.0F, 0, 1, 0);
         GlStateManager.disableTexture2D();
         GlStateManager.disableLighting();
         GlStateManager.disableCull();
